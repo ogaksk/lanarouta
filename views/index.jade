@@ -1,0 +1,37 @@
+head
+  link(rel='stylesheet', href='/stylesheets/style.css')
+  script(src="/socket.io/socket.io.js",type="text/javascript")
+  script(src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.0/jquery.min.js",type="text/javascript")
+  script(src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.12/jquery-ui.min.js",type="text/javascript")
+  script(type="text/javascript")
+
+    var socket = io.connect();
+    function submit(){
+      var message = "bang!";
+      socket.emit("sendmessage", {message : message});
+      console.log("ふいてる");
+    }
+
+
+body
+  div(class="wrapper")
+    div(class="output")
+    div(class="wrapper-inner")
+
+      div(class="iframe")
+      div(class="text")
+        div(class="title-logo")
+          button(id="button")
+      div(class="text")
+        
+
+      script(type="text/javascript")
+        // debug用
+        $("#button").bind("click", function() {
+          $("#button").animate({ "opacity": 0 }, 0, function(){
+            $(this).animate({ "opacity":　1 }, 100);
+          });
+          submit();
+        });
+        
+
